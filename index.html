@@ -2,1498 +2,769 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USDT Flash | تداول عملات رقمية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>USDT Flash Pro • منصة التداول الفوري المتطورة</title>
+    
+    <!-- الخطوط والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
+        /* ==================== المتغيرات الأساسية ==================== */
         :root {
-            --primary: #00c9a7;
-            --primary-dark: #00a58e;
-            --secondary: #845ec2;
-            --dark: #1e1e2d;
-            --light: #f5f5f5;
-            --danger: #ff6b6b;
-            --warning: #ffc75f;
+            --primary: #00e5b0;
+            --primary-dark: #00b388;
+            --primary-light: #33ffcc;
+            --secondary: #7b4cff;
+            --secondary-dark: #5a2fd9;
+            --secondary-light: #9d7aff;
+            --accent: #ffb83d;
+            --accent-dark: #e69a00;
+            --success: #2dd4bf;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --info: #38bdf8;
+            
+            --bg-primary: #0a0914;
+            --bg-secondary: #12101c;
+            --bg-tertiary: #1a1729;
+            --bg-card: #16132b;
+            --bg-glass: rgba(22, 19, 43, 0.85);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #b4afd6;
+            --text-tertiary: #7a759c;
+            --text-inverse: #0a0914;
+            
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-medium: rgba(255, 255, 255, 0.12);
+            --border-glow: rgba(0, 229, 176, 0.3);
+            
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 40px rgba(0, 229, 176, 0.3);
+            
             --gold: #FFD700;
             --silver: #C0C0C0;
             --bronze: #CD7F32;
-            --diamond: #b9f2ff;
+            --diamond: #a5f3fc;
+            --platinum: #e5e4e2;
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+            
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 900;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            background-color: #1e1e2d;
-            color: #e0e0e0;
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
             direction: rtl;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(0, 201, 167, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(132, 94, 194, 0.1) 0%, transparent 20%);
-        }
-        
-        /* تصميم الهيدر */
-        header {
-            background: rgba(30, 30, 45, 0.8);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            min-height: 100vh;
             position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 100;
         }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                rgba(0, 201, 167, 0.1) 0%, 
-                rgba(132, 94, 194, 0.1) 100%);
-            z-index: -1;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 229, 176, 0.06) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(123, 76, 255, 0.06) 0%, transparent 30%),
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 6px);
+            pointer-events: none; z-index: 0;
+            animation: backgroundShift 20s infinite alternate;
         }
-        
-        .logo {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
+        @keyframes backgroundShift { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+
+        /* ==================== شريط التحميل العلوي ==================== */
+        .global-loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 200% 100%; z-index: 10000; transform: scaleX(0); transform-origin: right;
+            transition: transform 0.3s; opacity: 0; animation: gradientShift 2s linear infinite;
+            box-shadow: 0 0 20px var(--primary);
         }
-        
-        .logo img {
-            width: 40px;
-            height: 40px;
-            animation: pulse 2s infinite;
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+        /* ==================== هيدر متكيف ==================== */
+        .main-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(10, 9, 20, 0.75); backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
         }
-        
-        .logo h1 {
-            margin: 0;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(0, 201, 167, 0.5);
+        .header-container {
+            max-width: 1200px; margin: 0 auto; padding: 0.6rem 1rem;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
         }
-        
-        /* تبديل اللغة */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 101;
+        .logo-wrapper { display: flex; align-items: center; gap: 0.6rem; }
+        .logo-icon-wrapper { width: 42px; height: 42px; }
+        .logo-icon {
+            width: 100%; height: 100%; background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-glow); opacity: 0.9;
         }
-        
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .logo-icon img { width: 28px; height: 28px; filter: brightness(0) invert(0); }
+        .logo-text h1 { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; }
+        .logo-text .subtitle { font-size: 0.65rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 1px; }
+        .header-actions { display: flex; align-items: center; gap: 0.6rem; }
+        .market-ticker { display: flex; gap: 1rem; background: var(--bg-glass); padding: 0.3rem 1rem; border-radius: 40px; backdrop-filter: blur(8px); border: 1px solid var(--border-light); }
+        .ticker-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.8rem; font-weight: 500; }
+        .lang-toggle {
+            background: var(--bg-glass); border: 1px solid var(--border-light); color: var(--text-primary);
+            padding: 0.4rem 1rem; border-radius: 40px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; gap: 0.4rem; backdrop-filter: blur(8px); font-size: 0.8rem;
         }
-        
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .lang-toggle:hover { background: var(--primary); color: #000; border-color: var(--primary); }
+
+        /* ==================== المحتوى الرئيسي ==================== */
+        .main-content {
+            max-width: 1100px; margin: 1rem auto; padding: 0 0.8rem;
+            position: relative; z-index: 1; min-height: calc(100vh - 70px);
         }
-        
-        /* تصميم المين كونتينر */
-        main {
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: calc(100vh - 120px);
+
+        .section-header { margin-bottom: 1.8rem; }
+        .section-title { font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.2rem; }
+        .section-title i { background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 0.5rem; border-radius: 14px; color: #000; font-size: 1.2rem; }
+        .section-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-right: 2.8rem; }
+
+        /* ==================== شبكة العروض (مضبوطة للجوال) ==================== */
+        .offers-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;
+            margin-top: 0.8rem;
         }
-        
-        /* تصميم الأقسام */
-        section {
-            display: none;
-            animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        section.active {
-            display: block;
-        }
-        
-        h2 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-        }
-        
-        /* تصميم بطاقات العروض */
-        .offer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
         .offer-card {
-            background: rgba(40, 40, 60, 0.6);
-            border-radius: 16px;
-            padding: 1.8rem;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1;
+            background: var(--bg-card); border-radius: 24px; padding: 1.2rem 1rem;
+            border: 1px solid var(--border-light); box-shadow: var(--shadow-md);
+            transition: all 0.2s; position: relative; overflow: hidden;
+            backdrop-filter: blur(5px);
         }
-        
-        .offer-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 201, 167, 0.05), rgba(132, 94, 194, 0.05));
-            z-index: -1;
+        .offer-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg), var(--shadow-glow); border-color: var(--border-glow); }
+        .card-badge {
+            position: absolute; top: 0.8rem; left: 0.8rem; background: linear-gradient(135deg, var(--accent), var(--warning));
+            color: #000; font-weight: 700; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; z-index: 2;
         }
-        
-        .offer-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(0, 201, 167, 0.3);
+        .coin-display { width: 100px; height: 100px; margin: 0.8rem auto; perspective: 800px; }
+        .coin-3d { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: coinFloat3D 6s infinite ease-in-out; }
+        @keyframes coinFloat3D {
+            0%,100% { transform: translateY(0) rotateY(0deg); }
+            25% { transform: translateY(-8px) rotateY(180deg); }
+            50% { transform: translateY(0) rotateY(360deg); }
+            75% { transform: translateY(5px) rotateY(540deg); }
         }
-        
-        .coin-animation {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1.2rem;
-            position: relative;
-            perspective: 1000px;
+        .coin-front, .coin-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
         }
-        
-        .coin {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate 5s infinite linear;
-        }
-        
-        .coin img {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            backface-visibility: hidden;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
-        }
-        
-        .coin .front {
-            transform: rotateY(0deg);
-        }
-        
-        .coin .back {
-            transform: rotateY(180deg);
-        }
-        
-        .offer-card h3 {
-            margin: 0.8rem 0;
-            color: white;
-            font-size: 1.4rem;
-        }
-        
-        .offer-card .price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0.5rem 0;
-            text-shadow: 0 2px 4px rgba(0, 201, 167, 0.3);
-        }
-        
-        .offer-card .price span {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .offer-card p {
-            margin: 0.4rem 0;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-        }
-        
-        .networks {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin: 0.8rem 0;
-        }
-        
-        .network-badge {
-            background: rgba(0, 201, 167, 0.1);
-            color: var(--primary);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            border: 1px solid var(--primary);
-        }
-        
-        .offer-card .badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: linear-gradient(90deg, var(--warning), #ff9671);
-            color: var(--dark);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-        
-        /* تصميم الأزرار */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-decoration: none;
-            text-align: center;
-            margin-top: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
+        .coin-front { transform: rotateY(0deg); }
+        .coin-back { transform: rotateY(180deg); background: radial-gradient(circle at 30% 30%, #e0e0e0, #808080); }
+        .coin-front img, .coin-back img { width: 55%; height: 55%; object-fit: contain; }
+
+        .offer-title { font-size: 1.3rem; font-weight: 700; text-align: center; margin: 0.5rem 0; }
+        .price-amount { font-size: 2rem; font-weight: 800; color: var(--primary); text-shadow: 0 0 15px var(--primary-dark); }
+        .price-amount small { font-size: 0.8rem; color: var(--text-tertiary); }
+        .receive-box { background: rgba(0,0,0,0.2); padding: 0.6rem; border-radius: 16px; margin: 0.8rem 0; border: 1px dashed var(--primary-dark); text-align: center; }
+        .receive-amount { font-size: 1.4rem; font-weight: 700; color: var(--primary-light); }
+        .network-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; justify-content: center; margin: 0.5rem 0; }
+        .network-tag { background: rgba(0,229,176,0.1); border: 1px solid var(--primary); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 30px; font-size: 0.7rem; }
+        .features-list { margin: 0.8rem 0; text-align: right; }
+        .feature-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.8rem; color: var(--text-secondary); }
+        .feature-row i { color: var(--success); width: 16px; font-size: 0.8rem; }
+
         .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; color: #000;
+            font-weight: 700; padding: 0.8rem 1rem; border-radius: 40px; width: 100%; font-size: 0.95rem;
+            cursor: pointer; transition: 0.2s; box-shadow: var(--shadow-md); display: flex;
+            align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.5rem;
         }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 201, 167, 0.4);
-        }
-        
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg), var(--shadow-glow); }
         .btn-secondary {
-            background: linear-gradient(90deg, var(--secondary), #6c5ce7);
-            color: white;
+            background: var(--bg-tertiary); border: 1px solid var(--border-light); color: var(--text-primary);
+            font-weight: 600; padding: 0.8rem; border-radius: 40px; width: 100%; font-size: 0.9rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
         }
-        
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(132, 94, 194, 0.4);
+
+        /* ==================== بطاقات العمليات (مصغرة ومناسبة) ==================== */
+        .process-card {
+            max-width: 480px; margin: 1rem auto; background: var(--bg-glass); backdrop-filter: blur(16px);
+            border-radius: 28px; padding: 1.5rem 1.2rem; border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
         }
-        
-        /* صفحة إدخال المحفظة */
-        #wallet-input {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .form-group {
-            margin-bottom: 1.8rem;
-            text-align: right;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.6rem;
-            font-weight: 600;
-            color: white;
-        }
-        
+        .process-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+        .process-header i { font-size: 1.5rem; color: var(--primary); background: rgba(0,229,176,0.1); padding: 0.5rem; border-radius: 14px; }
+        .process-header h2 { font-size: 1.4rem; font-weight: 700; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-label { display: block; margin-bottom: 0.3rem; font-weight: 600; color: var(--text-secondary); font-size: 0.9rem; }
         .form-control {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: white;
+            width: 100%; padding: 0.8rem 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-light);
+            border-radius: 16px; color: white; font-size: 0.9rem;
         }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 201, 167, 0.2);
-            background-color: rgba(255, 255, 255, 0.1);
+        .info-banner { background: rgba(0,229,176,0.08); border: 1px solid var(--primary); border-radius: 14px; padding: 0.6rem; margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.85rem; }
+        .qr-wrapper { background: white; padding: 0.8rem; border-radius: 18px; display: inline-block; margin: 0.8rem 0; }
+        .qr-wrapper img { width: 160px; height: 160px; display: block; }
+        .address-display {
+            background: rgba(0,0,0,0.4); padding: 0.8rem; border-radius: 14px; font-family: monospace;
+            font-size: 0.8rem; word-break: break-all; display: flex; align-items: center; justify-content: space-between;
+            gap: 0.5rem; border: 1px solid var(--border-light);
         }
-        
-        .network-info {
-            background: rgba(0, 201, 167, 0.1);
-            padding: 0.8rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            font-weight: 600;
+        .copy-btn {
+            background: var(--secondary); border: none; color: white; padding: 0.4rem 0.9rem;
+            border-radius: 30px; cursor: pointer; font-weight: 600; font-size: 0.8rem; display: flex; align-items: center; gap: 0.3rem;
         }
-        
-        /* صفحة الدفع */
-        #payment-page {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .payment-details {
-            background: rgba(40, 40, 60, 0.8);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .payment-details::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        
-        .payment-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-        }
-        
-        .payment-info p {
-            font-size: 1.1rem;
-            color: white;
-        }
-        
-        .payment-info .amount {
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .qr-code {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            display: inline-block;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .qr-code img {
-            width: 220px;
-            height: 220px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.8rem;
-            background: white;
-        }
-        
-        .wallet-address {
-            margin-top: 1.5rem;
-            padding: 0.8rem 1.2rem;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 1rem;
-            word-break: break-all;
-            position: relative;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .wallet-address .copy-btn {
-            position: absolute;
-            left: 0.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(90deg, var(--secondary), #6c5ce7);
-            color: white;
-            border: none;
-            padding: 0.3rem 0.6rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .wallet-address .copy-btn:hover {
-            background: linear-gradient(90deg, #6c5ce7, var(--secondary));
-        }
-        
-        .timer {
-            margin: 1.8rem 0;
-            font-size: 1.3rem;
+        .timer-display {
+            font-size: 2rem; font-weight: 800; background: rgba(0,0,0,0.3); padding: 0.5rem 1.2rem;
+            border-radius: 40px; display: inline-block; margin: 0.8rem 0; border: 2px solid var(--danger);
             color: var(--danger);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
         }
-        
-        .timer i {
-            font-size: 1.5rem;
-            animation: pulse 1.5s infinite;
+        .payment-summary {
+            display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2);
+            padding: 0.6rem 1rem; border-radius: 14px; margin: 0.5rem 0;
         }
-        
-        /* صفحة التأكيد */
-        #confirmation-page {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .confirmation-box {
-            background: rgba(40, 40, 60, 0.8);
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .confirmation-box::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        
-        .confirmation-box img {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 1.5rem;
-            animation: bounce 1s;
-            filter: drop-shadow(0 4px 12px rgba(0, 201, 167, 0.4));
-        }
-        
-        .confirmation-box h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s;
-        }
-        
-        .confirmation-details {
-            margin: 1.5rem 0;
-            text-align: right;
-            animation: fadeInUp 0.8s 0.2s both;
-        }
-        
-        .confirmation-details p {
-            margin: 0.8rem 0;
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .confirmation-details .order-number {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        /* صفحة إدخال معاملة الدفع */
-        #transaction-input {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .transaction-form {
-            background: rgba(40, 40, 60, 0.8);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .transaction-form::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        
-        /* زر التيليجرام */
+        .order-details { background: rgba(0,0,0,0.2); border-radius: 16px; padding: 1rem; margin: 1rem 0; text-align: right; }
+        .order-number { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+
         .telegram-float {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: #0088cc;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.5);
-            z-index: 100;
+            position: fixed; bottom: 1rem; left: 1rem; width: 50px; height: 50px;
+            background: linear-gradient(135deg, #1DA1F2, #0088cc); border-radius: 18px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;
+            box-shadow: 0 8px 20px rgba(29,161,242,0.4); z-index: 99; border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        /* ==================== شاشة التحقق الاحترافية ==================== */
+        .fullscreen-loader {
+            position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(8, 7, 16, 0.96);
+            backdrop-filter: blur(20px); z-index: 1000; display: none; align-items: center; justify-content: center;
+        }
+        .verification-box {
+            max-width: 380px; width: 90%; background: rgba(20, 18, 35, 0.8); backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 229, 176, 0.25); border-radius: 48px; padding: 2rem 1.5rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 0 2px rgba(0,229,176,0.1) inset;
+            text-align: center; animation: popIn 0.3s ease;
+        }
+        @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        
+        .blockchain-icon {
+            width: 100px; height: 100px; margin: 0 auto 1.5rem; position: relative;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .blockchain-icon .hex {
+            width: 80px; height: 80px; background: linear-gradient(145deg, #1e293b, #0f172a);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 30px rgba(0,229,176,0.4), inset 0 0 15px rgba(0,0,0,0.5);
+            border: 2px solid var(--primary);
+        }
+        .blockchain-icon i {
+            font-size: 2.5rem; color: var(--primary);
+            animation: floatIcon 2s infinite alternate;
+        }
+        @keyframes floatIcon { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
+        
+        .verification-title {
+            font-size: 1.8rem; font-weight: 800; margin-bottom: 0.25rem;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .verification-step {
+            font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.2rem;
+            min-height: 2.5rem; display: flex; align-items: center; justify-content: center;
+        }
+        .step-indicator {
+            display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 1.5rem;
+        }
+        .step-dot {
+            width: 10px; height: 10px; border-radius: 50%; background: var(--text-tertiary);
             transition: all 0.3s;
-            animation: float 3s ease-in-out infinite;
         }
+        .step-dot.active { background: var(--primary); box-shadow: 0 0 15px var(--primary); transform: scale(1.3); }
+        .step-dot.completed { background: var(--success); }
         
-        .telegram-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 24px rgba(0, 136, 204, 0.7);
-            animation: none;
+        .progress-bar-container {
+            height: 8px; background: rgba(255,255,255,0.05); border-radius: 20px;
+            margin: 1.2rem 0; overflow: hidden; border: 1px solid var(--border-light);
         }
+        .progress-bar-fill {
+            height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 100%; border-radius: 20px; transition: width 0.1s linear;
+            animation: barGlow 1.5s infinite; box-shadow: 0 0 15px var(--primary);
+        }
+        @keyframes barGlow { 0%,100% { opacity: 0.9; } 50% { opacity: 1; filter: brightness(1.2); } }
         
-        /* تأثيرات الحركة */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .tx-preview {
+            background: rgba(0,0,0,0.3); border-radius: 20px; padding: 0.8rem; margin: 1rem 0;
+            border: 1px solid var(--border-light); font-family: monospace; font-size: 0.8rem;
+            word-break: break-all; color: var(--text-secondary);
         }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .fail-message {
+            background: rgba(248,113,113,0.08); border: 1px solid var(--danger); border-radius: 20px;
+            padding: 1.2rem; margin-top: 1rem; color: var(--danger); display: none;
         }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
+        .fail-message i { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .retry-btn {
+            background: transparent; border: 1px solid var(--danger); color: var(--danger);
+            padding: 0.6rem 1.5rem; border-radius: 40px; margin-top: 0.8rem; font-weight: 600;
+            cursor: pointer; transition: 0.2s;
         }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
+        .retry-btn:hover { background: var(--danger); color: #000; }
+
+        /* تحسينات للجوال */
+        @media (max-width: 600px) {
+            .header-container { flex-direction: column; align-items: stretch; text-align: center; }
+            .market-ticker { justify-content: center; }
+            .section-title { font-size: 1.5rem; }
+            .offer-card { padding: 1rem 0.8rem; }
+            .coin-display { width: 85px; height: 85px; }
+            .price-amount { font-size: 1.6rem; }
+            .receive-amount { font-size: 1.2rem; }
+            .process-card { padding: 1.2rem 1rem; margin: 0.5rem; }
+            .qr-wrapper img { width: 140px; height: 140px; }
+            .timer-display { font-size: 1.6rem; padding: 0.3rem 1rem; }
+            .verification-box { padding: 1.5rem 1rem; }
         }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-        
-        @keyframes shine {
-            0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-            100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-        }
-        
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px rgba(0, 201, 167, 0.5); }
-            50% { text-shadow: 0 0 15px rgba(0, 201, 167, 0.8); }
-            100% { text-shadow: 0 0 5px rgba(0, 201, 167, 0.5); }
-        }
-        
-        /* حركات جديدة للعملات */
-        @keyframes coinFlip {
-            0% { transform: rotateY(0deg); }
-            50% { transform: rotateY(180deg); }
-            100% { transform: rotateY(360deg); }
-        }
-        
-        @keyframes coinFloat {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(10deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-        }
-        
-        @keyframes coinPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes coinShake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
-        }
-        
-        /* التكيف مع الشاشات الصغيرة */
-        @media (max-width: 768px) {
-            .offer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            main {
-                padding: 1.5rem 1rem;
-            }
-            
-            .logo h1 {
-                font-size: 1.8rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .payment-details, .confirmation-box, .transaction-form {
-                padding: 1.5rem;
-            }
-            
-            .qr-code img {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .telegram-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                left: 20px;
-            }
-        }
-        
-        /* ميزات العرض */
-        .features {
-            margin-top: 1rem;
-            text-align: right;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .feature-item i {
-            margin-left: 0.5rem;
-            color: var(--primary);
-        }
-        
-        /* عداد الأيام */
-        .days-counter {
-            margin-top: 1rem;
-            padding: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        /* أنماط خاصة للعروض */
-        .gold-offer {
-            border: 1px solid var(--gold);
-            animation: shine 3s infinite;
-        }
-        
-        .gold-offer .price {
-            color: var(--gold);
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-        }
-        
-        .silver-offer {
-            border: 1px solid var(--silver);
-        }
-        
-        .silver-offer .price {
-            color: var(--silver);
-        }
-        
-        .bronze-offer {
-            border: 1px solid var(--bronze);
-        }
-        
-        .bronze-offer .price {
-            color: var(--bronze);
-        }
-        
-        .diamond-offer {
-            border: 1px solid var(--diamond);
-            animation: shine 3s infinite;
-        }
-        
-        .diamond-offer .price {
-            color: var(--diamond);
-            text-shadow: 0 0 5px rgba(185, 242, 255, 0.5);
-        }
-        
-        /* تأثيرات خاصة للعملات حسب نوع العرض */
-        .gold-offer .coin {
-            animation: coinFlip 3s infinite ease-in-out, coinPulse 2s infinite;
-        }
-        
-        .silver-offer .coin {
-            animation: coinFloat 4s infinite ease-in-out;
-        }
-        
-        .bronze-offer .coin {
-            animation: coinShake 3s infinite;
-        }
-        
-        .diamond-offer .coin {
-            animation: coinFlip 2.5s infinite linear, coinPulse 1.5s infinite;
-        }
-        
-        /* شاشة التحميل */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(30, 30, 45, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: all 0.5s ease;
-        }
-        
-        .loading-content {
-            text-align: center;
-            max-width: 500px;
-            padding: 2rem;
-        }
-        
-        .loader {
-            width: 80px;
-            height: 80px;
-            border: 6px solid rgba(255, 255, 255, 0.1);
-            border-top: 6px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 2rem;
-        }
-        
-        .loading-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .loading-subtext {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-        }
-        
-        .loading-progress {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-        
-        .loading-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+
+        /* تنسيقات خاصة للعروض */
+        .offer-card.bronze .price-amount { color: var(--bronze); }
+        .offer-card.silver .price-amount { color: var(--silver); }
+        .offer-card.gold { border-top: 4px solid var(--gold); }
+        .offer-card.gold .price-amount { color: var(--gold); }
+        .offer-card.platinum { border-top: 4px solid var(--platinum); }
+        .offer-card.diamond { border-top: 4px solid var(--diamond); }
+
+        .text-center { text-align: center; }
+        .w-100 { width: 100%; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="language-switcher">
-            <button class="lang-btn" id="lang-toggle">
-                <i class="fas fa-language"></i>
-                <span id="current-lang">العربية</span>
-            </button>
-        </div>
-        <div class="logo">
-            <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT">
-            <h1>USDT FLASH</h1>
+    <div class="global-loader" id="globalLoader"></div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <div class="logo-icon-wrapper">
+                    <div class="logo-icon">
+                        <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT Flash">
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <h1>USDT FLASH <span style="font-size: 1rem;">⚡</span></h1>
+                    <span class="subtitle" data-i18n="header.subtitle">Flash Trading Protocol v4.0</span>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <div class="market-ticker">
+                    <div class="ticker-item"><i class="fab fa-bitcoin"></i> BTC <span class="price-positive">+2.8%</span></div>
+                    <div class="ticker-item"><i class="fab fa-ethereum"></i> ETH <span class="price-positive">+2.1%</span></div>
+                    <div class="ticker-item"><i class="fas fa-dollar-sign"></i> USDT $1.00</div>
+                </div>
+                <button class="lang-toggle" id="langToggleBtn">
+                    <i class="fas fa-globe"></i>
+                    <span id="langDisplay">English</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main>
-        <!-- الصفحة الرئيسية مع عروض USDT -->
-        <section id="offers" class="active">
-            <h2><i class="fas fa-coins"></i> <span class="lang-ar">عروض التداول الفوري</span><span class="lang-en" style="display:none">Instant Trading Offers</span></h2>
-            <div class="offer-container">
-                <!-- عرض 1 -->
-                <div class="offer-card bronze-offer">
-                    <div class="badge"><span class="lang-ar">الأكثر طلباً</span><span class="lang-en" style="display:none">Most Popular</span></div>
-                    <div class="coin-animation">
-                        <div class="coin">
-                            <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT" class="front">
-                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB" class="back">
-                        </div>
-                    </div>
-                    <h3><span class="lang-ar">باقة البداية</span><span class="lang-en" style="display:none">Starter Pack</span></h3>
-                    <div class="price">100 <span>USDT</span></div>
-                    <p><i class="fas fa-bolt"></i> <span class="lang-ar">تحصل على: 2000 USDT Flash</span><span class="lang-en" style="display:none">You get: 2000 USDT Flash</span></p>
-                    <div class="networks">
-                        <span class="network-badge">TRC20</span>
-                    </div>
-                    <div class="features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للتداول في المنصات</span>
-                            <span class="lang-en" style="display:none">Tradable on platforms</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">متوافق مع ألعاب الكازينو</span>
-                            <span class="lang-en" style="display:none">Compatible with casino games</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للاستخدام في القروض</span>
-                            <span class="lang-en" style="display:none">Usable for loans</span>
-                        </div>
-                    </div>
-                    <div class="days-counter">
-                        <span class="lang-ar">ينتهي العرض خلال: 155 يوم</span>
-                        <span class="lang-en" style="display:none">Offer expires in: 155 days</span>
-                    </div>
-                    <p><i class="fas fa-shield-alt"></i> <span class="lang-ar">أمان بنسبة 100%</span><span class="lang-en" style="display:none">100% Secure</span></p>
-                    <button class="btn btn-primary buy-btn" data-offer="1"><span class="lang-ar">شراء الآن</span><span class="lang-en" style="display:none">Buy Now</span></button>
+    <main class="main-content">
+        <!-- العروض -->
+        <section id="offersSection">
+            <div class="section-header">
+                <div class="section-title">
+                    <i class="fas fa-bolt"></i>
+                    <span><span class="title-highlight" data-i18n="offers.title">عروض التداول الفوري</span></span>
                 </div>
-                
-                <!-- عرض 2 -->
-                <div class="offer-card silver-offer">
-                    <div class="coin-animation">
-                        <div class="coin">
-                            <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT" class="front">
-                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB" class="back">
-                        </div>
-                    </div>
-                    <h3><span class="lang-ar">باقة المتوسط</span><span class="lang-en" style="display:none">Standard Pack</span></h3>
-                    <div class="price">200 <span>USDT</span></div>
-                    <p><i class="fas fa-bolt"></i> <span class="lang-ar">تحصل على: 4000 USDT Flash</span><span class="lang-en" style="display:none">You get: 4000 USDT Flash</span></p>
-                    <div class="networks">
-                        <span class="network-badge">TRC20</span>
-                    </div>
-                    <div class="features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للتداول في المنصات</span>
-                            <span class="lang-en" style="display:none">Tradable on platforms</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">متوافق مع ألعاب الكازينو</span>
-                            <span class="lang-en" style="display:none">Compatible with casino games</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للاستخدام في القروض</span>
-                            <span class="lang-en" style="display:none">Usable for loans</span>
-                        </div>
-                    </div>
-                    <div class="days-counter">
-                        <span class="lang-ar">ينتهي العرض خلال: 155 يوم</span>
-                        <span class="lang-en" style="display:none">Offer expires in: 155 days</span>
-                    </div>
-                    <p><i class="fas fa-shield-alt"></i> <span class="lang-ar">أمان بنسبة 100%</span><span class="lang-en" style="display:none">100% Secure</span></p>
-                    <button class="btn btn-primary buy-btn" data-offer="2"><span class="lang-ar">شراء الآن</span><span class="lang-en" style="display:none">Buy Now</span></button>
-                </div>
-                
-                <!-- عرض 3 -->
-                <div class="offer-card gold-offer">
-                    <div class="coin-animation">
-                        <div class="coin">
-                            <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT" class="front">
-                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB" class="back">
-                        </div>
-                    </div>
-                    <h3><span class="lang-ar">باقة المتقدم</span><span class="lang-en" style="display:none">Advanced Pack</span></h3>
-                    <div class="price">500 <span>USDT</span></div>
-                    <p><i class="fas fa-bolt"></i> <span class="lang-ar">تحصل على: 10000 USDT Flash</span><span class="lang-en" style="display:none">You get: 10000 USDT Flash</span></p>
-                    <div class="networks">
-                        <span class="network-badge">TRC20</span>
-                    </div>
-                    <div class="features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للتداول في المنصات</span>
-                            <span class="lang-en" style="display:none">Tradable on platforms</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">متوافق مع ألعاب الكازينو</span>
-                            <span class="lang-en" style="display:none">Compatible with casino games</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للاستخدام في القروض</span>
-                            <span class="lang-en" style="display:none">Usable for loans</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">دعم فني 24/7</span>
-                            <span class="lang-en" style="display:none">24/7 Support</span>
-                        </div>
-                    </div>
-                    <div class="days-counter">
-                        <span class="lang-ar">ينتهي العرض خلال: 155 يوم</span>
-                        <span class="lang-en" style="display:none">Offer expires in: 155 days</span>
-                    </div>
-                    <p><i class="fas fa-shield-alt"></i> <span class="lang-ar">أمان بنسبة 100%</span><span class="lang-en" style="display:none">100% Secure</span></p>
-                    <button class="btn btn-primary buy-btn" data-offer="3"><span class="lang-ar">شراء الآن</span><span class="lang-en" style="display:none">Buy Now</span></button>
-                </div>
-                
-                <!-- عرض 4 -->
-                <div class="offer-card gold-offer">
-                    <div class="badge"><span class="lang-ar">عرض خاص</span><span class="lang-en" style="display:none">Special Offer</span></div>
-                    <div class="coin-animation">
-                        <div class="coin">
-                            <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT" class="front">
-                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB" class="back">
-                        </div>
-                    </div>
-                    <h3><span class="lang-ar">باقة الذهبية</span><span class="lang-en" style="display:none">Golden Pack</span></h3>
-                    <div class="price">1000 <span>USDT</span></div>
-                    <p><i class="fas fa-bolt"></i> <span class="lang-ar">تحصل على: 20000 USDT Flash</span><span class="lang-en" style="display:none">You get: 20000 USDT Flash</span></p>
-                    <div class="networks">
-                        <span class="network-badge">TRC20</span>
-                    </div>
-                    <div class="features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للتداول في المنصات</span>
-                            <span class="lang-en" style="display:none">Tradable on platforms</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">متوافق مع ألعاب الكازينو</span>
-                            <span class="lang-en" style="display:none">Compatible with casino games</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للاستخدام في القروض</span>
-                            <span class="lang-en" style="display:none">Usable for loans</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">دعم فني 24/7</span>
-                            <span class="lang-en" style="display:none">24/7 Support</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">مكافآت إضافية</span>
-                            <span class="lang-en" style="display:none">Extra rewards</span>
-                        </div>
-                    </div>
-                    <div class="days-counter">
-                        <span class="lang-ar">ينتهي العرض خلال: 155 يوم</span>
-                        <span class="lang-en" style="display:none">Offer expires in: 155 days</span>
-                    </div>
-                    <p><i class="fas fa-shield-alt"></i> <span class="lang-ar">أمان بنسبة 100%</span><span class="lang-en" style="display:none">100% Secure</span></p>
-                    <button class="btn btn-primary buy-btn" data-offer="4"><span class="lang-ar">شراء الآن</span><span class="lang-en" style="display:none">Buy Now</span></button>
-                </div>
-                
-                <!-- عرض 5 -->
-                <div class="offer-card diamond-offer">
-                    <div class="coin-animation">
-                        <div class="coin">
-                            <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT" class="front">
-                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB" class="back">
-                        </div>
-                    </div>
-                    <h3><span class="lang-ar">باقة البلاتينية</span><span class="lang-en" style="display:none">Platinum Pack</span></h3>
-                    <div class="price">2000 <span>USDT</span></div>
-                    <p><i class="fas fa-bolt"></i> <span class="lang-ar">تحصل على: 40000 USDT Flash</span><span class="lang-en" style="display:none">You get: 40000 USDT Flash</span></p>
-                    <div class="networks">
-                        <span class="network-badge">TRC20</span>
-                    </div>
-                    <div class="features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للتداول في المنصات</span>
-                            <span class="lang-en" style="display:none">Tradable on platforms</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">متوافق مع ألعاب الكازينو</span>
-                            <span class="lang-en" style="display:none">Compatible with casino games</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للاستخدام في القروض</span>
-                            <span class="lang-en" style="display:none">Usable for loans</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">دعم فني 24/7</span>
-                            <span class="lang-en" style="display:none">24/7 Support</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">مكافآت إضافية</span>
-                            <span class="lang-en" style="display:none">Extra rewards</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">تحويلات فورية</span>
-                            <span class="lang-en" style="display:none">Instant transfers</span>
-                        </div>
-                    </div>
-                    <div class="days-counter">
-                        <span class="lang-ar">ينتهي العرض خلال: 155 يوم</span>
-                        <span class="lang-en" style="display:none">Offer expires in: 155 days</span>
-                    </div>
-                    <p><i class="fas fa-shield-alt"></i> <span class="lang-ar">أمان بنسبة 100%</span><span class="lang-en" style="display:none">100% Secure</span></p>
-                    <button class="btn btn-primary buy-btn" data-offer="5"><span class="lang-ar">شراء الآن</span><span class="lang-en" style="display:none">Buy Now</span></button>
-                </div>
-                
-                <!-- عرض 6 -->
-                <div class="offer-card diamond-offer">
-                    <div class="coin-animation">
-                        <div class="coin">
-                            <img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png" alt="USDT" class="front">
-                            <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB" class="back">
-                        </div>
-                    </div>
-                    <h3><span class="lang-ar">باقة الماسية</span><span class="lang-en" style="display:none">Diamond Pack</span></h3>
-                    <div class="price">5000 <span>USDT</span></div>
-                    <p><i class="fas fa-bolt"></i> <span class="lang-ar">تحصل على: 100000 USDT Flash</span><span class="lang-en" style="display:none">You get: 100000 USDT Flash</span></p>
-                    <div class="networks">
-                        <span class="network-badge">TRC20</span>
-                    </div>
-                    <div class="features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للتداول في المنصات</span>
-                            <span class="lang-en" style="display:none">Tradable on platforms</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">متوافق مع ألعاب الكازينو</span>
-                            <span class="lang-en" style="display:none">Compatible with casino games</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">قابل للاستخدام في القروض</span>
-                            <span class="lang-en" style="display:none">Usable for loans</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">دعم فني 24/7</span>
-                            <span class="lang-en" style="display:none">24/7 Support</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">مكافآت إضافية</span>
-                            <span class="lang-en" style="display:none">Extra rewards</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">تحويلات فورية</span>
-                            <span class="lang-en" style="display:none">Instant transfers</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span class="lang-ar">خصومات حصرية</span>
-                            <span class="lang-en" style="display:none">Exclusive discounts</span>
-                        </div>
-                    </div>
-                    <div class="days-counter">
-                        <span class="lang-ar">ينتهي العرض خلال: 155 يوم</span>
-                        <span class="lang-en" style="display:none">Offer expires in: 155 days</span>
-                    </div>
-                    <p><i class="fas fa-shield-alt"></i> <span class="lang-ar">أمان بنسبة 100%</span><span class="lang-en" style="display:none">100% Secure</span></p>
-                    <button class="btn btn-primary buy-btn" data-offer="6"><span class="lang-ar">شراء الآن</span><span class="lang-en" style="display:none">Buy Now</span></button>
+                <div class="section-subtitle" data-i18n="offers.security">
+                    <i class="fas fa-shield-alt" style="color: var(--primary);"></i> 
+                    معاملات آمنة 100% • دعم فوري • TRC20
                 </div>
             </div>
+            <div class="offers-grid" id="offersContainer"></div>
         </section>
 
-        <!-- صفحة إدخال المحفظة -->
-        <section id="wallet-input">
-            <h2><i class="fas fa-wallet"></i> <span class="lang-ar">تفاصيل المحفظة</span><span class="lang-en" style="display:none">Wallet Details</span></h2>
-            <div class="network-info">
-                <i class="fas fa-info-circle"></i> 
-                <span class="lang-ar">يتم الدفع فقط عبر شبكة TRC20</span>
-                <span class="lang-en" style="display:none">Payment is only via TRC20 network</span>
-            </div>
-            <form id="wallet-form">
-                <div class="form-group">
-                    <label for="wallet-address"><i class="fas fa-qrcode"></i> <span class="lang-ar">عنوان محفظة USDT</span><span class="lang-en" style="display:none">USDT Wallet Address</span></label>
-                    <input type="text" id="wallet-address" class="form-control" placeholder="أدخل عنوان محفظتك USDT" required>
-                </div>
-                
-                <button type="submit" class="btn btn-secondary">
-                    <span class="lang-ar">تأكيد والمتابعة للدفع</span>
-                    <span class="lang-en" style="display:none">Confirm & Proceed to Payment</span>
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-            </form>
-        </section>
-
-        <!-- صفحة الدفع -->
-        <section id="payment-page">
-            <h2><i class="fas fa-money-bill-wave"></i> <span class="lang-ar">إتمام عملية الدفع</span><span class="lang-en" style="display:none">Complete Payment</span></h2>
-            <div class="payment-details">
-                <div class="payment-info">
-                    <p><span class="lang-ar">المبلغ المطلوب:</span><span class="lang-en" style="display:none">Amount Required:</span></p>
-                    <p class="amount"><span id="payment-amount">100</span> USDT</p>
-                </div>
-                
-                <p><span class="lang-ar">سوف تحصل على:</span><span class="lang-en" style="display:none">You will receive:</span> <span id="receive-amount">2000</span> USDT Flash</p>
-                
-                <p><span class="lang-ar">يرجى إرسال المبلغ المطلوب إلى العنوان التالي:</span><span class="lang-en" style="display:none">Please send the required amount to the following address:</span></p>
-                
-                <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=Tether:TYJ76gv87HJk9?amount=100" alt="دفع USDT">
-                </div>
-                
-                <div class="wallet-address">
-                    <button class="copy-btn" onclick="copyAddress()"><i class="fas fa-copy"></i> <span class="lang-ar">نسخ</span><span class="lang-en" style="display:none">Copy</span></button>
-                    <span id="payment-address">TYJ76gv87HJk9</span>
-                </div>
-                
-                <p id="network-info"><i class="fas fa-network-wired"></i> <span class="lang-ar">الشبكة:</span><span class="lang-en" style="display:none">Network:</span> <span id="selected-network">TRC20</span></p>
-                
-                <div class="timer">
-                    <i class="fas fa-clock"></i>
-                    <span id="countdown">15:00</span>
-                </div>
-                
-                <p><span class="lang-ar">سيتم التحقق من الدفع تلقائياً</span><span class="lang-en" style="display:none">Payment will be verified automatically</span></p>
-                <p><span class="lang-ar">في حال عدم التحقق خلال الوقت المحدد، سيتم إلغاء الطلب تلقائياً</span><span class="lang-en" style="display:none">If not verified within the specified time, the order will be automatically canceled</span></p>
-                
-                <button id="paid-btn" class="btn btn-secondary">
-                    <span class="lang-ar">تم الدفع</span>
-                    <span class="lang-en" style="display:none">Payment Done</span>
-                    <i class="fas fa-check"></i>
-                </button>
-            </div>
-        </section>
-
-        <!-- صفحة إدخال معاملة الدفع -->
-        <section id="transaction-input">
-            <h2><i class="fas fa-receipt"></i> <span class="lang-ar">تأكيد المعاملة</span><span class="lang-en" style="display:none">Transaction Confirmation</span></h2>
-            <div class="transaction-form">
-                <form id="transaction-form">
+        <!-- المحفظة -->
+        <section id="walletSection" style="display: none;">
+            <div class="process-card">
+                <div class="process-header"><i class="fas fa-wallet"></i><h2 data-i18n="wallet.title">تفاصيل محفظة USDT</h2></div>
+                <div class="info-banner"><i class="fas fa-info-circle"></i><span data-i18n="wallet.info">الدفع فقط عبر TRC20</span></div>
+                <form id="walletForm">
                     <div class="form-group">
-                        <label for="transaction-id"><i class="fas fa-hashtag"></i> <span class="lang-ar">معرف المعاملة (TxID)</span><span class="lang-en" style="display:none">Transaction ID (TxID)</span></label>
-                        <input type="text" id="transaction-id" class="form-control" placeholder="أدخل معرف المعاملة من محفظتك" required>
-                        <small class="lang-ar" style="color: rgba(255,255,255,0.6); display: block; margin-top: 0.5rem; text-align: right;">يمكنك العثور على معرف المعاملة في سجل المعاملات بمحفظتك</small>
-                        <small class="lang-en" style="color: rgba(255,255,255,0.6); display: none; margin-top: 0.5rem; text-align: right;">You can find the transaction ID in your wallet's transaction history</small>
+                        <label class="form-label"><i class="fas fa-qrcode"></i> <span data-i18n="wallet.label">عنوان محفظتك (TRC20)</span></label>
+                        <input type="text" id="walletAddressInput" class="form-control" placeholder="T..." required>
+                        <small style="color: var(--text-tertiary);" data-i18n="wallet.hint"><i class="fas fa-check-circle" style="color: var(--success);"></i> تأكد أن العنوان يبدأ بـ T</small>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="screenshot"><i class="fas fa-image"></i> <span class="lang-ar">صورة إثبات الدفع (اختياري)</span><span class="lang-en" style="display:none">Payment Proof Screenshot (Optional)</span></label>
-                        <input type="file" id="screenshot" class="form-control" accept="image/*">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">
-                        <span class="lang-ar">تأكيد وإرسال</span>
-                        <span class="lang-en" style="display:none">Confirm & Submit</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
+                    <button type="submit" class="btn-primary"><span data-i18n="wallet.button">متابعة إلى الدفع</span><i class="fas fa-arrow-left"></i></button>
                 </form>
             </div>
         </section>
 
-        <!-- صفحة التأكيد -->
-        <section id="confirmation-page">
-            <div class="confirmation-box">
-                <img src="https://cdn-icons-png.flaticon.com/512/7518/7518748.png" alt="تم بنجاح">
-                <h2><span class="lang-ar">تم استلام طلبك بنجاح!</span><span class="lang-en" style="display:none">Your order has been received!</span></h2>
-                
-                <div class="confirmation-details">
-                    <p><span class="lang-ar">سيتم تأكيد الدفع وإرسال USDT Flash إلى محفظتك خلال 30 دقيقة</span><span class="lang-en" style="display:none">Payment will be confirmed and USDT Flash will be sent to your wallet within 30 minutes</span></p>
-                    <p><span class="lang-ar">رقم الطلب:</span><span class="lang-en" style="display:none">Order Number:</span> <span class="order-number" id="order-number">#USDT-584932</span></p>
-                    <p><span class="lang-ar">سوف تحصل على:</span><span class="lang-en" style="display:none">You will receive:</span> <span id="confirmation-amount">2000</span> USDT Flash</p>
-                    <p><span class="lang-ar">لأي استفسار، يرجى التواصل عبر التيليجرام</span><span class="lang-en" style="display:none">For any inquiries, please contact via Telegram</span></p>
+        <!-- الدفع -->
+        <section id="paymentSection" style="display: none;">
+            <div class="process-card">
+                <div class="process-header"><i class="fas fa-qrcode"></i><h2 data-i18n="payment.title">إتمام عملية الدفع</h2></div>
+                <div class="payment-summary"><span data-i18n="payment.amount">المبلغ المطلوب:</span><span id="paymentAmountDisplay">0</span></div>
+                <p style="text-align:center;"><span data-i18n="payment.receive">ستحصل على</span> <strong id="receiveAmountDisplay">0</strong> USDT Flash</p>
+                <div style="text-align:center;"><div class="qr-wrapper"><img id="qrImage" src="" alt="QR"></div></div>
+                <p data-i18n="payment.sendTo">أرسل إلى:</p>
+                <div class="address-display"><span id="paymentAddressSpan">TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi</span><button class="copy-btn" onclick="copyPaymentAddress()"><i class="far fa-copy"></i><span data-i18n="common.copy">نسخ</span></button></div>
+                <p><i class="fas fa-network-wired"></i> <span data-i18n="payment.network">الشبكة:</span> <strong>TRC20</strong></p>
+                <div style="text-align:center;"><div class="timer-display" id="countdownTimer">15:00</div></div>
+                <div class="info-banner" style="background:rgba(248,113,113,0.1);border-color:var(--danger);color:var(--danger);"><i class="fas fa-clock"></i><span data-i18n="payment.timeout">سيتم الإلغاء تلقائياً</span></div>
+                <button id="paidTriggerBtn" class="btn-primary" style="background:var(--secondary);"><span data-i18n="payment.paid">تم إرسال الدفع</span><i class="fas fa-check-circle"></i></button>
+            </div>
+        </section>
+
+        <!-- تأكيد المعاملة (TxID فقط) -->
+        <section id="txSection" style="display: none;">
+            <div class="process-card">
+                <div class="process-header"><i class="fas fa-receipt"></i><h2 data-i18n="tx.title">تأكيد المعاملة</h2></div>
+                <form id="txForm">
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-hashtag"></i> <span data-i18n="tx.label">معرف المعاملة (TxID)</span></label>
+                        <input type="text" id="txIdInput" class="form-control" placeholder="أدخل TxID" required>
+                        <small data-i18n="tx.hint">يمكنك العثور عليه في سجل المحفظة</small>
+                    </div>
+                    <button type="submit" class="btn-primary"><span data-i18n="tx.button">تأكيد وإرسال</span><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
+
+        <!-- التأكيد النهائي (غير مستخدم حالياً) -->
+        <section id="confirmSection" style="display: none;">
+            <div class="process-card text-center">
+                <div class="success-icon"><i class="fas fa-check-circle" style="font-size:3.5rem; color:var(--success);"></i></div>
+                <h2 data-i18n="confirm.title">تم استلام طلبك!</h2>
+                <div class="order-details">
+                    <p><span data-i18n="confirm.orderNumber">رقم الطلب:</span> <span class="order-number" id="orderNumberSpan">USDT-XXXX</span></p>
+                    <p><span data-i18n="confirm.receiveAmount">ستحصل على:</span> <span id="finalReceiveAmount" style="color:var(--primary);">0</span></p>
                 </div>
-                
-                <button id="back-home" class="btn btn-primary">
-                    <span class="lang-ar">العودة للرئيسية</span>
-                    <span class="lang-en" style="display:none">Back to Home</span>
-                    <i class="fas fa-home"></i>
-                </button>
+                <button id="backHomeBtn" class="btn-primary"><span data-i18n="common.backHome">العودة للعروض</span></button>
             </div>
         </section>
     </main>
 
-    <!-- زر التيليجرام العائم -->
-    <a href="https://t.me/silk_61" class="telegram-float" target="_blank">
-        <i class="fab fa-telegram"></i>
-    </a>
+    <a href="https://t.me/silk_61" class="telegram-float" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 
-    <!-- شاشة التحميل -->
-    <div class="loading-overlay" id="loading-screen" style="display: none;">
-        <div class="loading-content">
-            <div class="loader"></div>
-            <div class="loading-text" id="loading-text">
-                <span class="lang-ar">جاري التحقق من الدفع</span>
-                <span class="lang-en" style="display:none">Verifying Payment</span>
+    <!-- شاشة التحقق الاحترافية -->
+    <div class="fullscreen-loader" id="fullscreenLoader">
+        <div class="verification-box">
+            <div class="blockchain-icon">
+                <div class="hex">
+                    <i class="fas fa-link" id="verificationIcon"></i>
+                </div>
             </div>
-            <div class="loading-subtext" id="loading-subtext">
-                <span class="lang-ar">يرجى الانتظار، قد يستغرق هذا من 30 إلى 60 ثانية</span>
-                <span class="lang-en" style="display:none">Please wait, this may take 30 to 60 seconds</span>
+            <div class="verification-title" id="loaderTitle">التحقق من المعاملة</div>
+            <div class="verification-step" id="loaderStep">جاري الاتصال بالبلوكشين...</div>
+            <div class="step-indicator" id="stepIndicator">
+                <span class="step-dot"></span><span class="step-dot"></span><span class="step-dot"></span><span class="step-dot"></span>
             </div>
-            <div class="loading-progress">
-                <div class="loading-bar" id="loading-bar"></div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="loaderBar"></div>
             </div>
-            <div class="loading-subtext" id="verification-text" style="display: none;">
-                <span class="lang-ar">الرجاء التحقق من دفعك قبل المتابعة</span>
-                <span class="lang-en" style="display:none">Please verify your payment before proceeding</span>
+            <div class="tx-preview" id="txPreview">TxID: <span id="displayTxId">----</span></div>
+            <div class="fail-message" id="failMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>فشل التحقق</h3>
+                <p>لم نتمكن من تأكيد المعاملة. تأكد من صحة TxID وأن الدفع قد تم.</p>
+                <button class="retry-btn" onclick="retryVerification()"><i class="fas fa-redo-alt"></i> إعادة المحاولة</button>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // عناصر الصفحات
-            const offersSection = document.getElementById('offers');
-            const walletSection = document.getElementById('wallet-input');
-            const paymentSection = document.getElementById('payment-page');
-            const transactionSection = document.getElementById('transaction-input');
-            const confirmationSection = document.getElementById('confirmation-page');
-            const loadingScreen = document.getElementById('loading-screen');
-            const loadingBar = document.getElementById('loading-bar');
-            const loadingText = document.getElementById('loading-text');
-            const loadingSubtext = document.getElementById('loading-subtext');
-            const verificationText = document.getElementById('verification-text');
-            
-            // بيانات العروض
-            const offers = {
-                1: { amount: 100, receive: 2000, trc20: "TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi" },
-                2: { amount: 200, receive: 4000, trc20: "TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi" },
-                3: { amount: 500, receive: 10000, trc20: "TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi" },
-                4: { amount: 1000, receive: 20000, trc20: "TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi" },
-                5: { amount: 2000, receive: 40000, trc20: "TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi" },
-                6: { amount: 5000, receive: 100000, trc20: "TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi" }
+        (function(){
+            "use strict";
+
+            // ==================== بيانات الترجمة ====================
+            const translations = {
+                ar: {
+                    'header.subtitle': 'Flash Trading Protocol v4.0',
+                    'offers.title': 'عروض التداول الفوري',
+                    'offers.security': 'معاملات آمنة 100% • دعم فوري • TRC20',
+                    'wallet.title': 'تفاصيل محفظة USDT',
+                    'wallet.info': 'الدفع فقط عبر شبكة TRC20',
+                    'wallet.label': 'عنوان محفظتك (TRC20)',
+                    'wallet.hint': 'تأكد من أن العنوان يبدأ بحرف T',
+                    'wallet.button': 'متابعة إلى الدفع',
+                    'payment.title': 'إتمام عملية الدفع',
+                    'payment.amount': 'المبلغ المطلوب:',
+                    'payment.receive': 'ستحصل على',
+                    'payment.sendTo': 'أرسل إلى العنوان:',
+                    'payment.network': 'الشبكة:',
+                    'payment.timeout': 'سيتم إلغاء الطلب تلقائياً',
+                    'payment.paid': 'تم إرسال الدفع',
+                    'tx.title': 'تأكيد المعاملة',
+                    'tx.label': 'معرف المعاملة (TxID)',
+                    'tx.hint': 'يمكنك العثور عليه في سجل المعاملات',
+                    'tx.button': 'تأكيد وإرسال',
+                    'confirm.title': 'تم استلام طلبك!',
+                    'confirm.orderNumber': 'رقم الطلب:',
+                    'confirm.receiveAmount': 'ستحصل على:',
+                    'common.copy': 'نسخ',
+                    'common.backHome': 'العودة إلى العروض',
+                    'offer.buy': 'شراء الآن',
+                    'offer.feature1':'تداول فوري','offer.feature2':'متوافق مع الكازينو','offer.feature3':'قابل للقروض',
+                    'offer.feature4':'دعم 24/7','offer.feature5':'مكافآت','offer.feature6':'تحويلات فورية','offer.feature7':'خصومات',
+                    'offer.badge.popular':'الأكثر طلباً','offer.badge.featured':'عرض مميز','offer.badge.premium':'VIP','offer.badge.whale':'حوت'
+                },
+                en: {
+                    'header.subtitle': 'Flash Trading Protocol v4.0',
+                    'offers.title': 'Instant Trading Offers',
+                    'offers.security': '100% Secure • Instant Support • TRC20',
+                    'wallet.title': 'USDT Wallet Details',
+                    'wallet.info': 'Payment only via TRC20',
+                    'wallet.label': 'Your Wallet Address (TRC20)',
+                    'wallet.hint': 'Address must start with T',
+                    'wallet.button': 'Proceed to Payment',
+                    'payment.title': 'Complete Payment',
+                    'payment.amount': 'Required Amount:',
+                    'payment.receive': 'You will receive',
+                    'payment.sendTo': 'Send to:',
+                    'payment.network': 'Network:',
+                    'payment.timeout': 'Order will be canceled automatically',
+                    'payment.paid': 'Payment Sent',
+                    'tx.title': 'Transaction Confirmation',
+                    'tx.label': 'Transaction ID (TxID)',
+                    'tx.hint': 'Find it in your wallet history',
+                    'tx.button': 'Confirm & Submit',
+                    'confirm.title': 'Order Received!',
+                    'confirm.orderNumber': 'Order Number:',
+                    'confirm.receiveAmount': 'You will receive:',
+                    'common.copy': 'Copy',
+                    'common.backHome': 'Back to Offers',
+                    'offer.buy': 'Buy Now',
+                    'offer.feature1':'Instant Trading','offer.feature2':'Casino Compatible','offer.feature3':'Loan Ready',
+                    'offer.feature4':'24/7 Support','offer.feature5':'Rewards','offer.feature6':'Instant Transfers','offer.feature7':'Discounts',
+                    'offer.badge.popular':'Most Popular','offer.badge.featured':'Featured','offer.badge.premium':'VIP','offer.badge.whale':'Whale'
+                }
             };
-            
-            let selectedOffer = null;
-            let countdownInterval = null;
-            let currentLang = 'ar';
-            
-            // وظيفة تبديل اللغة
-            function toggleLanguage() {
-                currentLang = currentLang === 'ar' ? 'en' : 'ar';
-                document.getElementById('current-lang').textContent = currentLang === 'ar' ? 'العربية' : 'English';
-                
-                // تبديل اتجاه الصفحة
-                document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-                
-                // تبديل عرض العناصر حسب اللغة
-                document.querySelectorAll('.lang-ar').forEach(el => {
-                    el.style.display = currentLang === 'ar' ? 'inline' : 'none';
+
+            // ==================== البيانات ====================
+            const offersData = [
+                { id:1, nameAr:'الباقة البرونزية', nameEn:'Bronze Pack', amount:100, receive:2000, address:'TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi', badge:'offer.badge.popular', type:'bronze', features:['offer.feature1','offer.feature2','offer.feature3'] },
+                { id:2, nameAr:'الباقة الفضية', nameEn:'Silver Pack', amount:200, receive:4000, address:'TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi', badge:null, type:'silver', features:['offer.feature1','offer.feature2','offer.feature3'] },
+                { id:3, nameAr:'الباقة الذهبية', nameEn:'Gold Pack', amount:500, receive:10000, address:'TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi', badge:'offer.badge.featured', type:'gold', features:['offer.feature1','offer.feature2','offer.feature3','offer.feature4'] },
+                { id:4, nameAr:'الباقة البلاتينية', nameEn:'Platinum Pack', amount:1000, receive:20000, address:'TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi', badge:null, type:'platinum', features:['offer.feature1','offer.feature2','offer.feature3','offer.feature4','offer.feature5'] },
+                { id:5, nameAr:'الباقة الماسية', nameEn:'Diamond Pack', amount:2000, receive:40000, address:'TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi', badge:'offer.badge.premium', type:'diamond', features:['offer.feature1','offer.feature2','offer.feature3','offer.feature4','offer.feature5','offer.feature6'] },
+                { id:6, nameAr:'حوت USDT', nameEn:'Whale Pack', amount:5000, receive:100000, address:'TJ1TdxWv59MdpjpTeVGBKkccfrPD7DfToi', badge:'offer.badge.whale', type:'diamond', features:['offer.feature1','offer.feature2','offer.feature3','offer.feature4','offer.feature5','offer.feature6','offer.feature7'] }
+            ];
+
+            // ==================== الحالة العامة ====================
+            let selectedOffer = offersData[0];
+            let timerInterval = null;
+            let currentLanguage = 'ar';
+            let verificationInterval = null;
+            let currentTxId = '';
+
+            // عناصر DOM
+            const sections = {
+                offers: document.getElementById('offersSection'),
+                wallet: document.getElementById('walletSection'),
+                payment: document.getElementById('paymentSection'),
+                tx: document.getElementById('txSection'),
+                confirm: document.getElementById('confirmSection')
+            };
+            const loader = document.getElementById('fullscreenLoader');
+            const loaderBar = document.getElementById('loaderBar');
+            const loaderTitle = document.getElementById('loaderTitle');
+            const loaderStep = document.getElementById('loaderStep');
+            const verificationIcon = document.getElementById('verificationIcon');
+            const stepDots = document.querySelectorAll('.step-dot');
+            const failMessage = document.getElementById('failMessage');
+            const txPreview = document.getElementById('txPreview');
+            const displayTxId = document.getElementById('displayTxId');
+
+            // ==================== دوال الترجمة والعرض ====================
+            function applyTranslations() {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if(translations[currentLanguage]?.[key]) el.textContent = translations[currentLanguage][key];
                 });
-                
-                document.querySelectorAll('.lang-en').forEach(el => {
-                    el.style.display = currentLang === 'en' ? 'inline' : 'none';
+                document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+                renderOffers();
+            }
+
+            function renderOffers() {
+                const container = document.getElementById('offersContainer'); 
+                container.innerHTML = '';
+                offersData.forEach(o => {
+                    const card = document.createElement('div'); 
+                    card.className = `offer-card ${o.type}`;
+                    const badgeKey = o.badge ? translations[currentLanguage][o.badge] : '';
+                    card.innerHTML = `
+                        ${badgeKey ? `<div class="card-badge"><i class="fas fa-star"></i> ${badgeKey}</div>` : ''}
+                        <div class="coin-display"><div class="coin-3d"><div class="coin-front"><img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png"></div><div class="coin-back"><img src="https://i.ibb.co/1J2x5nXP/Picsart-25-04-27-16-26-29-713.png"></div></div></div>
+                        <h3 class="offer-title">${currentLanguage==='ar'?o.nameAr:o.nameEn}</h3>
+                        <div class="price-display"><span class="price-amount">${o.amount} <small>USDT</small></span></div>
+                        <div class="receive-box"><i class="fas fa-gift"></i> ${currentLanguage==='ar'?'تحصل على':'You get'} <span class="receive-amount">${o.receive}</span> USDT Flash</div>
+                        <div class="network-tags"><span class="network-tag">TRC20</span><span class="network-tag">⚡فوري</span></div>
+                        <div class="features-list">${o.features.map(f=>`<div class="feature-row"><i class="fas fa-check-circle"></i><span>${translations[currentLanguage][f]}</span></div>`).join('')}</div>
+                        <button class="btn-primary buy-btn" data-id="${o.id}"><i class="fas fa-shopping-cart"></i><span>${translations[currentLanguage]['offer.buy']}</span></button>`;
+                    container.appendChild(card);
                 });
+                document.querySelectorAll('.buy-btn').forEach(b=>b.addEventListener('click',e=>{ 
+                    selectedOffer = offersData.find(o=>o.id==parseInt(b.dataset.id)); 
+                    showSection('wallet'); 
+                }));
             }
-            
-            // حدث تبديل اللغة
-            document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
-            
-            // وظيفة عرض القسم المحدد
-            function showSection(section) {
-                document.querySelectorAll('main section').forEach(sec => {
-                    sec.classList.remove('active');
-                });
-                section.classList.add('active');
-                window.scrollTo(0, 0);
+
+            function showSection(name) {
+                Object.values(sections).forEach(s=>s.style.display='none');
+                sections[name].style.display='block';
+                if(name==='payment') setupPaymentUI();
+                if(name==='offers') clearTimer();
+                window.scrollTo({top:0,behavior:'smooth'});
             }
-            
-            // بدء العد التنازلي
-            function startCountdown(seconds) {
-                clearInterval(countdownInterval);
-                
-                const countdownElement = document.getElementById('countdown');
-                let remaining = seconds;
-                
-                function updateCountdown() {
-                    const minutes = Math.floor(remaining / 60);
-                    const secs = remaining % 60;
-                    countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                    
-                    if (remaining <= 0) {
-                        clearInterval(countdownInterval);
-                        alert(currentLang === 'ar' ? 'انتهى وقت الدفع، يرجى البدء من جديد' : 'Payment time has expired, please start again');
-                        showSection(offersSection);
-                    }
-                    
-                    remaining--;
-                }
-                
-                updateCountdown();
-                countdownInterval = setInterval(updateCountdown, 1000);
+
+            function setupPaymentUI() {
+                document.getElementById('paymentAmountDisplay').textContent = `${selectedOffer.amount} USDT`;
+                document.getElementById('receiveAmountDisplay').textContent = selectedOffer.receive;
+                document.getElementById('paymentAddressSpan').textContent = selectedOffer.address;
+                document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${selectedOffer.address}`;
+                startTimer(15*60);
             }
-            
-            // توليد رقم طلب عشوائي
-            function generateOrderNumber() {
-                const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-                const numbers = '0123456789';
-                let result = 'USDT-';
-                
-                for (let i = 0; i < 3; i++) {
-                    result += letters.charAt(Math.floor(Math.random() * letters.length));
-                }
-                
-                for (let i = 0; i < 3; i++) {
-                    result += numbers.charAt(Math.floor(Math.random() * numbers.length));
-                }
-                
-                return result;
+
+            function startTimer(s) { 
+                clearTimer(); 
+                const disp = document.getElementById('countdownTimer'); 
+                let rem = s; 
+                const upd = ()=>{ 
+                    const m = Math.floor(rem/60), sec = rem%60; 
+                    disp.textContent = `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; 
+                    if(rem<=0){ clearTimer(); alert(currentLanguage==='ar'?'انتهى الوقت':'Timeout'); showSection('offers'); } 
+                    rem--; 
+                }; 
+                upd(); 
+                timerInterval = setInterval(upd,1000); 
             }
-            
-            // نسخ عنوان المحفظة
-            window.copyAddress = function() {
-                const address = document.getElementById('payment-address').textContent;
-                navigator.clipboard.writeText(address);
-                
-                const copyBtn = document.querySelector('.copy-btn');
-                copyBtn.innerHTML = currentLang === 'ar' ? 
-                    '<i class="fas fa-check"></i> تم النسخ' : 
-                    '<i class="fas fa-check"></i> Copied';
-                copyBtn.style.background = 'linear-gradient(90deg, var(--primary), var(--primary-dark))';
-                
-                setTimeout(() => {
-                    copyBtn.innerHTML = currentLang === 'ar' ? 
-                        '<i class="fas fa-copy"></i> نسخ' : 
-                        '<i class="fas fa-copy"></i> Copy';
-                    copyBtn.style.background = 'linear-gradient(90deg, var(--secondary), #6c5ce7)';
-                }, 2000);
-            }
-            
-            // أحداث أزرار الشراء
-            document.querySelectorAll('.buy-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    selectedOffer = this.getAttribute('data-offer');
-                    showSection(walletSection);
-                });
+            function clearTimer(){ if(timerInterval) clearInterval(timerInterval); }
+
+            window.copyPaymentAddress = function(){
+                const addr = document.getElementById('paymentAddressSpan').textContent;
+                navigator.clipboard?.writeText(addr);
+                const btn = document.querySelector('.copy-btn'); 
+                btn.innerHTML = '<i class="fas fa-check"></i> '+ (currentLanguage==='ar'?'تم':'Copied');
+                setTimeout(()=>btn.innerHTML='<i class="far fa-copy"></i> '+(currentLanguage==='ar'?'نسخ':'Copy'),2000);
+            };
+
+            // ==================== التبديل بين اللغات ====================
+            document.getElementById('langToggleBtn').addEventListener('click',()=>{ 
+                currentLanguage = currentLanguage==='ar'?'en':'ar'; 
+                document.getElementById('langDisplay').textContent = currentLanguage==='ar'?'English':'العربية'; 
+                applyTranslations(); 
             });
-            
-            // حدث تأكيد المحفظة
-            document.getElementById('wallet-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const walletAddress = document.getElementById('wallet-address').value;
-                if (!walletAddress) return;
-                
-                // تعبئة بيانات الدفع
-                document.getElementById('payment-amount').textContent = offers[selectedOffer].amount;
-                document.getElementById('receive-amount').textContent = offers[selectedOffer].receive;
-                document.getElementById('selected-network').textContent = 'TRC20';
-                
-                // تعيين عنوان المحفظة
-                document.getElementById('payment-address').textContent = offers[selectedOffer].trc20;
-                
-                // تحديث QR Code
-                const qrImg = document.querySelector('.qr-code img');
-                qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${offers[selectedOffer].trc20}`;
-                
-                // بدء العد التنازلي (15 دقيقة)
-                startCountdown(15 * 60);
-                
-                showSection(paymentSection);
+
+            // ==================== أحداث النماذج ====================
+            document.getElementById('walletForm').addEventListener('submit',e=>{ 
+                e.preventDefault(); 
+                if(document.getElementById('walletAddressInput').value.trim().length>5) showSection('payment'); 
             });
-            
-            // حدث تأكيد الدفع
-            document.getElementById('paid-btn').addEventListener('click', function() {
-                // الانتقال إلى صفحة إدخال معاملة الدفع
-                showSection(transactionSection);
-                clearInterval(countdownInterval);
-            });
-            
-            // حدث تأكيد معاملة الدفع
-            document.getElementById('transaction-form').addEventListener('submit', function(e) {
-                e.preventDefault();
+            document.getElementById('paidTriggerBtn').addEventListener('click',()=>{ clearTimer(); showSection('tx'); });
+
+            // ==================== التحقق الاحترافي ====================
+            const verificationStepsAr = ['جاري الاتصال بالبلوكشين...', 'التحقق من توقيع المعاملة...', 'فحص تأكيدات الشبكة...', 'التحقق من الرصيد...'];
+            const verificationStepsEn = ['Connecting to blockchain...', 'Verifying transaction signature...', 'Checking network confirmations...', 'Validating balance...'];
+
+            function resetVerificationUI() {
+                loaderBar.style.width = '0%';
+                failMessage.style.display = 'none';
+                stepDots.forEach((d,i)=> { d.className = 'step-dot'; });
+                verificationIcon.className = 'fas fa-link';
+                loaderTitle.textContent = currentLanguage==='ar'?'التحقق من المعاملة':'Verifying Transaction';
+                txPreview.style.opacity = '1';
+            }
+
+            function startVerification(txId) {
+                currentTxId = txId;
+                displayTxId.textContent = txId.length > 20 ? txId.substring(0,20)+'...' : txId;
+                resetVerificationUI();
+                loader.style.display = 'flex';
                 
-                const txId = document.getElementById('transaction-id').value;
-                if (!txId) return;
-                
-                // إظهار شاشة التحميل
-                loadingScreen.style.display = 'flex';
-                loadingBar.style.width = '0%';
-                verificationText.style.display = 'none';
-                loadingSubtext.style.display = 'block';
-                
+                const steps = currentLanguage==='ar'? verificationStepsAr : verificationStepsEn;
                 let progress = 0;
-                const progressInterval = setInterval(() => {
+                let stepIndex = 0;
+                
+                // تغيير الأيقونة إلى بلوكشين متحرك
+                verificationIcon.className = 'fas fa-cube';
+                
+                verificationInterval = setInterval(() => {
                     progress += 1;
-                    loadingBar.style.width = `${progress}%`;
+                    loaderBar.style.width = progress + '%';
+                    
+                    // تغيير الخطوات حسب التقدم
+                    if (progress >= 25 && stepIndex === 0) { stepIndex=1; loaderStep.textContent = steps[1]; stepDots[1].classList.add('active'); verificationIcon.className='fas fa-key'; }
+                    if (progress >= 50 && stepIndex === 1) { stepIndex=2; loaderStep.textContent = steps[2]; stepDots[2].classList.add('active'); verificationIcon.className='fas fa-check-double'; }
+                    if (progress >= 75 && stepIndex === 2) { stepIndex=3; loaderStep.textContent = steps[3]; stepDots[3].classList.add('active'); verificationIcon.className='fas fa-coins'; }
                     
                     if (progress >= 100) {
-                        clearInterval(progressInterval);
-                        
-                        // بعد اكتمال التحميل، عرض رسالة التحقق
-                        loadingText.innerHTML = currentLang === 'ar' ? 
-                            '<i class="fas fa-exclamation-circle"></i> الرجاء التحقق من دفعك' : 
-                            '<i class="fas fa-exclamation-circle"></i> Please verify your payment';
-                            
-                        loadingSubtext.style.display = 'none';
-                        verificationText.style.display = 'block';
-                        
-                        // بعد 30 ثانية، إخفاء شاشة التحميل وإظهار صفحة التأكيد
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                            
-                            // تعبئة رقم الطلب
-                            document.getElementById('order-number').textContent = generateOrderNumber();
-                            document.getElementById('confirmation-amount').textContent = offers[selectedOffer].receive;
-                            
-                            showSection(confirmationSection);
-                        }, 30000);
+                        clearInterval(verificationInterval);
+                        // إظهار الفشل دائماً (كما هو مطلوب)
+                        showVerificationFail();
                     }
-                }, 300); // 30 ثانية مقسمة على 100 خطوة
+                }, 300); // 30 ثانية = 100 * 300ms
+            }
+
+            function showVerificationFail() {
+                loaderBar.style.width = '100%';
+                verificationIcon.className = 'fas fa-times-circle';
+                loaderTitle.textContent = currentLanguage==='ar'?'❌ فشل التحقق':'❌ Verification Failed';
+                loaderStep.textContent = currentLanguage==='ar'?'تعذر تأكيد المعاملة':'Transaction could not be confirmed';
+                stepDots.forEach(d=> { d.classList.remove('active'); d.style.background = 'var(--danger)'; });
+                txPreview.style.opacity = '0.5';
+                failMessage.style.display = 'block';
+            }
+
+            window.retryVerification = function() {
+                if (verificationInterval) clearInterval(verificationInterval);
+                loader.style.display = 'none';
+                // البقاء في صفحة إدخال TxID مع إبقاء الحقل
+                document.getElementById('txIdInput').value = currentTxId; // إبقاء القيمة
+            };
+
+            // حدث إرسال نموذج التأكيد
+            document.getElementById('txForm').addEventListener('submit', e => {
+                e.preventDefault();
+                const txId = document.getElementById('txIdInput').value.trim();
+                if(!txId) return;
+                startVerification(txId);
             });
-            
-            // حدث العودة للرئيسية
-            document.getElementById('back-home').addEventListener('click', function() {
-                showSection(offersSection);
-                document.getElementById('wallet-form').reset();
-                document.getElementById('transaction-form').reset();
+
+            // عند إغلاق اللودر بالضغط على الخلفية (اختياري)
+            loader.addEventListener('click', (e) => {
+                if(e.target === loader) {
+                    if (verificationInterval) clearInterval(verificationInterval);
+                    loader.style.display = 'none';
+                }
             });
-        });
-    </script> 
-</body> 
+
+            document.getElementById('backHomeBtn')?.addEventListener('click',()=>{ showSection('offers'); });
+
+            // ==================== بدء التشغيل ====================
+            window.addEventListener('load',()=>{ 
+                currentLanguage='ar'; 
+                document.getElementById('langDisplay').textContent='English'; 
+                applyTranslations(); 
+            });
+        })();
+    </script>
+</body>
 </html>
